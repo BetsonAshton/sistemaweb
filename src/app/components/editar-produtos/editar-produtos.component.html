@@ -1,0 +1,173 @@
+<div class="m-4">
+
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <h4>Edição de Produtos</h4>
+            <p>Utilize o formulário para editar o produto.</p>
+            <hr />
+
+
+            <div *ngIf="mensagem" class="alert alert-primary alert-
+                 dismissible fade show mb-2" role="alert">
+                <strong>{{mensagem}}</strong>
+                <button type="button" class="btn-close" aria-
+                       label="Close" (click)="mensagem = ''"></button>
+            </div>
+
+
+            <form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+
+
+                <input type="hidden" formControlName="idProduto"/>
+
+
+                <div class="form-group row mb-2">
+                    <label for="nome" class="col-sm-2 col-form-label">Nome do produto:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nome" 
+                             placeholder="Digite o nome do produto"
+                            formControlName="nome">
+                        <span class="text-danger">
+                            <span *ngIf="form.nome.touched && 
+                                         form.nome.invalid">
+                                <span *ngIf="form.nome.errors.required">
+                                    Por favor, informe o nome do produto.
+                                </span>
+                                <span *ngIf="form.nome.errors.minlength">
+                                    Por favor, informe pelo menos 50 
+                                    caracteres.
+                                </span>
+                                <span *ngIf="form.nome.errors.maxlength">
+                                    Por favor, informe no máximo 150 
+                                    caracteres.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <label for="descricao" class="col-sm-2 col-form-
+                      label">Descrição do produto:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="descricao" 
+                             rows="3"
+                            placeholder="Digite a descrição do produto" 
+                            formControlName="descricao"></textarea>
+                        <span class="text-danger">
+                            <span *ngIf="form.descricao.touched && 
+                                 form.descricao.invalid">
+                                <span 
+                                  *ngIf="form.descricao.errors.required">
+                                    Por favor, informe a descrição do 
+                                    produto.
+                                </span>
+                                <span 
+                                 *ngIf="form.descricao.errors.minlength">
+                                    Por favor, informe pelo menos 50 
+                                    caracteres.
+                                </span>
+                                <span 
+                                 *ngIf="form.descricao.errors.maxlength">
+                                    Por favor, informe no máximo 150 
+                                    caracteres.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <label for="preco" class="col-sm-2 col-form-
+                                label">Preço do produto:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" 
+                             id="preco" 
+                             placeholder="Digite o preço do produto"
+                            formControlName="preco">
+                        <span class="text-danger">
+                            <span *ngIf="form.preco.touched && 
+                                         form.preco.invalid">
+                                <span *ngIf="form.preco.errors.required">
+                                    Por favor, informe o preço do 
+                                    produto.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <label for="quantidade" class="col-sm-2 col-form-
+                       label">Quantidade do produto:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" 
+                               id="quantidade" 
+                             placeholder="Digite a quantidade do produto"
+                            formControlName="quantidade">
+                        <span class="text-danger">
+                            <span *ngIf="form.quantidade.touched && 
+                                         form.quantidade.invalid">
+                                <span 
+                                 *ngIf="form.quantidade.errors.required">
+                                    Por favor, informe a quantidade do 
+                                    produto.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <label for="idCategoria" class="col-sm-2 col-form-
+                           label">Categoria do produto:</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" 
+                                formControlName="idCategoria">
+                            <option value="">
+                                Escolha uma opção
+                            </option>
+                            <option *ngFor="let c of categorias" 
+                                     value="{{c.idCategoria}}">
+                                {{c.nome}} | {{c.descricao}}
+                            </option>
+                        </select>
+                        <span class="text-danger">
+                            <span *ngIf="form.idCategoria.touched && 
+                                         form.idCategoria.invalid">
+                                <span 
+                                *ngIf="form.idCategoria.errors.required">
+                                    Por favor, informe a categoria do 
+                                     produto.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn btn-success" 
+                            [disabled]="!formEdicao.valid">
+                            Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

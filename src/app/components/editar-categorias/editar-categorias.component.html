@@ -1,0 +1,104 @@
+<div class="m-4">
+
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <h4>Edição de Categorias</h4>
+            <p>Preencha os campos para editar uma categoria.</p>
+            <hr />
+
+
+            <div *ngIf="mensagem" class="alert alert-primary alert-
+                 dismissible fade show mb-2" role="alert">
+                <strong>{{mensagem}}</strong>
+                <button type="button" class="btn-close" aria-
+                  label="Close" (click)="mensagem = ''"></button>
+            </div>
+
+
+            <form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+
+
+                <input type="hidden" formControlName="idCategoria" />
+
+
+                <div class="form-group row mb-2">
+                    <label for="nome" class="col-sm-2 col-form-
+                           label">Nome da categoria:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nome" 
+                            placeholder="Digite o nome da categoria"
+                            formControlName="nome">
+                        <span class="text-danger">
+                            <span *ngIf="form.nome.touched && 
+                                         form.nome.invalid">
+                                <span *ngIf="form.nome.errors.required">
+                                    Por favor, informe o nome da 
+                                    categoria.
+                                </span>
+
+
+                                <span *ngIf="form.nome.errors.minlength">
+                                    Por favor, informe pelo menos 50 
+                                    caracteres.
+                                </span>
+                                <span *ngIf="form.nome.errors.maxlength">
+                                    Por favor, informe no máximo 150 
+                                    caracteres.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <label for="descricao" class="col-sm-2 col-form-
+                          label">Descrição da categoria:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="descricao" 
+                            rows="3"
+                            placeholder="Digite a descrição da categoria" 
+                            formControlName="descricao"></textarea>
+                        <span class="text-danger">
+                            <span *ngIf="form.descricao.touched && 
+                                         form.descricao.invalid">
+                                <span 
+                                  *ngIf="form.descricao.errors.required">
+                                    Por favor, informe a descrição da 
+                                    categoria.
+                                </span>
+                                <span 
+                                 *ngIf="form.descricao.errors.minlength">
+                                    Por favor, informe pelo menos 50 
+                                    caracteres.
+                                </span>
+                                <span 
+                                 *ngIf="form.descricao.errors.maxlength">
+                                    Por favor, informe no máximo 150 
+                                    caracteres.
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mb-2">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn btn-primary" 
+                             [disabled]="!formEdicao.valid">
+                            Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+

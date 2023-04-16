@@ -1,0 +1,87 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h2 class="card-title">Criar Conta</h2>
+                        <p class="card-subtitle">Entre com os dados para cadastrar-se</p>
+                    </div>
+
+                    <hr />
+
+                    <div class="text-center">
+                        <strong>{{mensagem}}</strong>
+                    </div>
+
+                    <form [formGroup]="formCriarConta" (ngSubmit)="onSubmit()">
+
+                        <div class="mb-2">
+                            <label for="nome" class="form-label">Nome do usuário</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Seu nome" formControlName="nome">
+                            <span class="text-danger">
+                                <span *ngIf="form.nome.touched && form.nome.invalid">
+                                    <span *ngIf="form.nome.errors.required">
+                                        Por favor, informe o nome do usuário.
+                                    </span>
+                                    <span *ngIf="form.nome.errors.minlength">
+                                        Por favor, informe no mínimo 8 caracteres.
+                                    </span>
+                                    <span *ngIf="form.nome.errors.maxlength">
+                                        Por favor, informe no máximo 150 caracteres.
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="mb-2">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Seu e-mail" formControlName="email">
+                            <span class="text-danger">
+                                <span *ngIf="form.email.touched && form.email.invalid">
+                                    <span *ngIf="form.email.errors.required">
+                                        Por favor, informe o email do usuário.
+                                    </span>
+                                    <span *ngIf="form.email.errors.email">
+                                        Por favor, informe um endereço de email válido.
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="mb-2">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" placeholder="Sua senha" formControlName="senha">
+                            <span class="text-danger">
+                                <span *ngIf="form.senha.touched && form.senha.invalid">
+                                    <span *ngIf="form.senha.errors.required">
+                                        Por favor, informe a senha do usuário.
+                                    </span>
+                                    <span *ngIf="form.senha.errors.pattern">
+                                        Por favor, informe a senha com pelo menos 1 letra maiúscula, 1 letra minúscula, 1 dígito numérico, 1 símbolo especial e de 8 a 20 caracteres.
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="d-grid mb-2">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="!formCriarConta.valid">
+                                Realizar Cadastro
+                            </button>
+                        </div>
+                        <div class="d-grid mb-2">
+                            <a [routerLink]="['/login']" class="btn btn-light">
+                                Já possui conta? <strong>Acesse aqui!</strong>
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="mt-2 text-center">
+                <small>Sistema Web - Angular 2023</small>
+            </div>
+
+        </div>
+    </div>
+</div>

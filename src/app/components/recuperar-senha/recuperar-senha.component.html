@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h2 class="card-title">Recuperar Senha</h2>
+                        <p class="card-subtitle">Entre com o
+                            seu email de acesso</p>
+                    </div>
+
+
+                    <hr />
+
+                    <div class="text-center">
+                        <strong>{{mensagem}}</strong>
+                    </div>
+
+
+                    <form [formGroup]="formRecuperarSenha" (ngSubmit)="onSubmit()">
+
+
+                        <div class="mb-2">
+                            <label for="email" class="form-
+                                        label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Seu e-mail"
+                                formControlName="email">
+                            <span class="text-danger" *ngIf="form.email.touched 
+                                     && form.email.invalid">
+                                <span *ngIf="form.email.errors.required">
+                                    Por favor, informe o email do
+                                    usuário.
+                                </span>
+                                <span *ngIf="form.email.errors.email">
+                                    Por favor, informe um endereço
+                                    de email válido.
+                                </span>
+                            </span>
+                        </div>
+                        <div class="d-grid mb-2">
+                            <button type="submit" class="btn btn-primary" [disabled]="!formRecuperarSenha.valid">
+                                Recuperar Senha
+                            </button>
+                        </div>
+                        <div class="d-grid mb-2">
+                            <a [routerLink]="['/login']" class="btn btn-light">
+                                Já possui conta?
+                                <strong>Acesse aqui!</strong>
+                            </a>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+
+
+            <div class="mt-2 text-center">
+                <small>Sistema Web - Angular 2023</small>
+            </div>
+        </div>
+    </div>
+</div>

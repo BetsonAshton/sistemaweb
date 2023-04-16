@@ -1,0 +1,66 @@
+<div class="m-4">
+
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <h4>Consulta de Produtos</h4>
+            <p>Listagem de produtos cadastrados.</p>
+            <hr />
+
+
+            <div *ngIf="mensagem" class="alert alert-primary alert-
+                dismissible fade show mb-2" role="alert">
+                <strong>{{mensagem}}</strong>
+                <button type="button" class="btn-close" aria- label="Close" (click)="mensagem = ''"></button>
+            </div>
+
+
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nome do produto</th>
+                            <th>Descrição</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Categoria</th>
+                            <th>Operações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr *ngFor="let p of produtos">
+                            <td>{{p.nome}}</td>
+                            <td>{{p.descricao}}</td>
+                            <td>{{p.preco | currency: 'R$'}}</td>
+                            <td>{{p.quantidade}}</td>
+                            <td>{{p.categoria.nome}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"
+                                [routerLink]="['/editar-produtos', p.idProduto]">
+                                Editar
+                        </button>
+                        
+                                &nbsp;
+                                <button class="btn btn-danger btn-sm" (click)="onDelete(p.idProduto)">
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                Quantidade de produtos:
+                                {{produtos.length}}
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">Sistema Web</a>
+    <button class="navbar-toggler" type="button" data-bs- toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria- label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div *ngIf="!isLoggedIn" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" [routerLink]="['/login']">
+            Acessar Conta
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" [routerLink]="['/criar-conta']">
+            Criar Conta
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" [routerLink]="['/recuperar-senha']">
+            Recuperar Senha
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Gerenciar Categorias
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/cadastrar-categorias']">
+                Cadastrar Categorias
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/consultar-categorias']">
+                Consultar Categorias
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Gerenciar Produtos
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/cadastrar-produtos']">
+                Cadastrar Produtos
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/consultar-produtos']">
+                Consultar Produtos
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+
+      <div class="d-flex">
+        <div>
+          <div>
+            <strong class="text-white">{{nomeUsuario}}</strong>
+          </div>
+          <div style="margin-top: -8px!important;" class="text-white">
+            <small>{{emailUsuario}}</small>
+          </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div>
+          <a (click)="logout()" class="btn btn-outline-light">
+            Sair do Sistema
+          </a>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</nav>
