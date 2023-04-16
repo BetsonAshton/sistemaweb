@@ -1,6 +1,6 @@
 # Sistemaweb
 
-Projeto Utilizando o Angular 15 com integrações de APIs
+Projeto web Utilizando o Angular 15 com integrações de APIs em .Net
 
 ## APIs utilizadas com os links
 apiusuarios: https://github.com/BetsonAshton/apiusuarios
